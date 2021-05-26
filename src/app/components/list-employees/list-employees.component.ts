@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MessageComponent } from 'src/app/shared/message/message.component';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { Employee } from 'src/app/models/employee.interface';
-import { MatDialog } from '@angular/material/dialog';
-import { MessageComponent } from 'src/app/shared/message/message.component';
 
 @Component({
   selector: 'app-list-employees',
@@ -30,7 +31,8 @@ export class ListEmployeesComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -49,8 +51,6 @@ export class ListEmployeesComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  editEmployee(index: number): void {}
-
   deleteEmployee(index: number): void {
     const dialogRef = this.dialog.open(MessageComponent, {
       width: '350px',
@@ -60,6 +60,9 @@ export class ListEmployeesComponent implements OnInit {
       if (result === 'ok') {
         this.employeeService.deleteEmployee(index);
         this.loadEmployees();
+        this.snackBar.open('Deleted employee successfully', '', {
+          duration: 2500,
+        });
       }
     });
   }

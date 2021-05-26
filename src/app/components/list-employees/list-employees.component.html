@@ -1,3 +1,14 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h2>Employee listing</h2>
+  </div>
+  <div class="col-lg-6 add-button">
+    <button mat-raised-button color="warn" routerLink="/add">
+      Add Employee
+    </button>
+  </div>
+</div>
+
 <mat-form-field>
   <mat-label>Filter</mat-label>
   <input
@@ -45,7 +56,7 @@
   <ng-container matColumnDef="Actions">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
     <td mat-cell *matCellDef="let element; let i = index">
-      <a class="pointer edit" (click)="editEmployee(i)">
+      <a class="pointer edit">
         <mat-icon>edit</mat-icon>
       </a>
       <a class="pointer delete" (click)="deleteEmployee(i)">
