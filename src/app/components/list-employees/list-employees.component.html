@@ -44,7 +44,7 @@
   </ng-container>
 
   <ng-container matColumnDef="Sex">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Sex</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
     <td mat-cell *matCellDef="let element">{{ element.sex }}</td>
   </ng-container>
 
@@ -56,7 +56,7 @@
   <ng-container matColumnDef="Actions">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
     <td mat-cell *matCellDef="let element; let i = index">
-      <a class="pointer edit">
+      <a class="pointer edit" routerLink="edit/{{ i }}">
         <mat-icon>edit</mat-icon>
       </a>
       <a class="pointer delete" (click)="deleteEmployee(i)">

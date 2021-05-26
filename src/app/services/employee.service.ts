@@ -49,4 +49,12 @@ export class EmployeeService {
   deleteEmployee(index: number): void {
     this.employeesList.splice(index, 1);
   }
+
+  addEmployee(employee: Employee): void {
+    this.employeesList.push(employee);
+  }
+
+  editEmployee(employee: Employee, idEmployee: number) {
+    this.employeesList[idEmployee] = employee;
+  }
 }
