@@ -45,4 +45,8 @@ export class EmployeeService {
   getEmployees() {
     return this.employeesList.slice();
   }
+
+  deleteEmployee(index: number): void {
+    this.employeesList.splice(index, 1);
+  }
 }
